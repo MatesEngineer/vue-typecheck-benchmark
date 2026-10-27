@@ -15,7 +15,7 @@ for (const command of commands) {
   const output = `${result.stdout}\n${result.stderr}`;
 
   if (result.error) throw result.error;
-  assertExactDiagnostics(command.id, output, result.status);
+  assertExactDiagnostics(command.id, output, result.status, result.signal);
 
   console.log(`ok (${expectedDiagnostics.length} exact diagnostics; no extras)`);
 }

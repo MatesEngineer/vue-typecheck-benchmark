@@ -36,8 +36,11 @@ const templateErrors = new Map([
 
 for (let index = 0; index < componentCount; index += 1) {
   const suffix = index.toString().padStart(4, "0");
-  const childAIndex = index > 0 ? index - 1 : null;
-  const childBIndex = index > 17 ? Math.floor(index / 2) : null;
+  const clusterSize = 20;
+  const clusterStart = Math.floor(index / clusterSize) * clusterSize;
+  const clusterOffset = index - clusterStart;
+  const childAIndex = clusterOffset > 0 ? index - 1 : null;
+  const childBIndex = clusterOffset > 8 ? clusterStart + Math.floor(clusterOffset / 2) : null;
   const childAName = childAIndex === null ? null : `GeneratedComponent${childAIndex.toString().padStart(4, "0")}`;
   const childBName = childBIndex === null ? null : `GeneratedComponent${childBIndex.toString().padStart(4, "0")}`;
   const childImports = [childAName, childBName]

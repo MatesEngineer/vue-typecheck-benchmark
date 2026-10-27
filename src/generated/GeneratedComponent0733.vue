@@ -8,7 +8,7 @@ import {
   type ItemStatus,
 } from "../shared";
 import ChildA from "./GeneratedComponent0732.vue";
-import ChildB from "./GeneratedComponent0366.vue";
+import ChildB from "./GeneratedComponent0726.vue";
 
 
 const props = defineProps<{

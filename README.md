@@ -8,8 +8,8 @@ A reproducible large-project benchmark for five Vue type-checking paths:
 4. Vize's Content Mapper with TypeScript 7.1 (`tsc`)
 5. Vize's Content Mapper with `tsrs`
 
-The corpus contains 2,500 generated Vue SFCs connected as a non-trivial dependency DAG. Components
-exercise typed props, emits, slots, discriminated unions, exposed methods, and typed
+The corpus contains 2,500 generated Vue SFCs connected as 20-component dependency DAG clusters.
+Components exercise typed props, emits, slots, discriminated unions, exposed methods, and typed
 `useTemplateRef()` access. Twelve intentional type-error sites are spread across `<script setup>` and
 templates. Package versions are pinned in the lockfile.
 
@@ -56,14 +56,14 @@ Apple M5 Pro, 48 GiB RAM, Node.js 26.6.0; zero warmups and five fresh-process ru
 
 | Checker | Median | Range | Speedup vs vue-tsc |
 | --- | ---: | ---: | ---: |
-| Vue Content Mapper + tsrs | 4.300 s | 3.885–4.587 s | 5.89x |
-| Vue Content Mapper + TypeScript 7.1 | 5.767 s | 5.198–6.118 s | 4.39x |
-| Vize Content Mapper + tsrs | 8.213 s | 7.705–8.695 s | 3.08x |
-| Vize Content Mapper + TypeScript 7.1 | 20.759 s | 18.985–21.598 s | 1.22x |
-| vue-tsc + TypeScript 6 | 25.337 s | 23.791–27.212 s | 1.00x |
+| Vue Content Mapper + tsrs | 3.493 s | 3.281–3.947 s | 6.55x |
+| Vue Content Mapper + TypeScript 7.1 | 4.365 s | 4.205–4.655 s | 5.24x |
+| Vize Content Mapper + tsrs | 6.688 s | 6.665–6.801 s | 3.42x |
+| Vize Content Mapper + TypeScript 7.1 | 15.851 s | 15.362–16.144 s | 1.44x |
+| vue-tsc + TypeScript 6 | 22.880 s | 22.797–22.910 s | 1.00x |
 
-See the [Markdown report](./benchmark/results/2026-10-27T10-19-17Z.md) and
-[raw JSON](./benchmark/results/2026-10-27T10-19-17Z.json). Every measured invocation passed the
+See the [Markdown report](./benchmark/results/2026-10-27T10-29-21Z.md) and
+[raw JSON](./benchmark/results/2026-10-27T10-29-21Z.json). Every measured invocation passed the
 exact 12-diagnostic parity gate.
 
 ## Performance target

@@ -25,7 +25,7 @@ function run(command) {
   });
   const durationMs = Number(process.hrtime.bigint() - start) / 1_000_000;
   if (result.error) throw result.error;
-  assertExactDiagnostics(command.id, `${result.stdout}\n${result.stderr}`, result.status);
+  assertExactDiagnostics(command.id, `${result.stdout}\n${result.stderr}`, result.status, result.signal);
   return durationMs;
 }
 

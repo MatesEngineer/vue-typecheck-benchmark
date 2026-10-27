@@ -1,0 +1,99 @@
+{
+  "environment": {
+    "timestamp": "2026-10-27T10:29:21.298Z",
+    "hostname": "workstation",
+    "platform": "darwin 25.4.0",
+    "cpu": "Apple M5 Pro",
+    "logicalCpus": 15,
+    "totalMemoryBytes": 51539607552,
+    "freeMemoryBytesAtReport": 16352182272,
+    "node": "v26.6.0",
+    "componentCount": 2500,
+    "intentionalErrorSites": 12,
+    "cachePolicy": "fresh process; no compiler, mapper, task, or tsbuildinfo cache; OS page cache not flushed",
+    "warmups": 0,
+    "iterations": 5
+  },
+  "results": [
+    {
+      "id": "vue-tsrs",
+      "label": "@vue/content-mapper 4.0.0-alpha.0 + tsrs 0.20.0",
+      "samplesMs": [
+        3947.489833,
+        3280.723209,
+        3291.826667,
+        3493.172792,
+        3505.2185
+      ],
+      "meanMs": 3503.6862002000003,
+      "medianMs": 3493.172792,
+      "minMs": 3280.723209,
+      "maxMs": 3947.489833,
+      "standardDeviationMs": 241.52494754526185
+    },
+    {
+      "id": "vue-tsgo",
+      "label": "@vue/content-mapper 4.0.0-alpha.0 + TypeScript 7.1 beta (tsc)",
+      "samplesMs": [
+        4364.642042,
+        4205.205917,
+        4224.998042,
+        4530.783333,
+        4654.994333
+      ],
+      "meanMs": 4396.1247334,
+      "medianMs": 4364.642042,
+      "minMs": 4205.205917,
+      "maxMs": 4654.994333,
+      "standardDeviationMs": 174.2824758064749
+    },
+    {
+      "id": "vize-tsrs",
+      "label": "Vize 0.595.0 Content Mapper + tsrs 0.20.0",
+      "samplesMs": [
+        6734.637583,
+        6800.551583,
+        6688.023292,
+        6673.030375,
+        6665.107459
+      ],
+      "meanMs": 6712.2700584,
+      "medianMs": 6688.023292,
+      "minMs": 6665.107459,
+      "maxMs": 6800.551583,
+      "standardDeviationMs": 50.29095934417111
+    },
+    {
+      "id": "vize-tsgo",
+      "label": "Vize 0.595.0 Content Mapper + TypeScript 7.1 beta (tsc)",
+      "samplesMs": [
+        16144.327291,
+        15804.6135,
+        15362.059334,
+        15850.587792,
+        15932.15075
+      ],
+      "meanMs": 15818.7477334,
+      "medianMs": 15850.587792,
+      "minMs": 15362.059334,
+      "maxMs": 16144.327291,
+      "standardDeviationMs": 256.3747852394938
+    },
+    {
+      "id": "vue-tsc",
+      "label": "vue-tsc 3.3.13 + TypeScript 6.0.3",
+      "samplesMs": [
+        22902.297708,
+        22796.913125,
+        22909.888292,
+        22873.79575,
+        22879.870084
+      ],
+      "meanMs": 22872.5529918,
+      "medianMs": 22879.870084,
+      "minMs": 22796.913125,
+      "maxMs": 22909.888292,
+      "standardDeviationMs": 40.13762952285885
+    }
+  ]
+}

@@ -8,6 +8,7 @@ import {
   type ItemStatus,
 } from "../shared";
 import ChildA from "./GeneratedComponent0013.vue";
+import ChildB from "./GeneratedComponent0007.vue";
 
 
 const props = defineProps<{
@@ -60,6 +61,7 @@ const forwardSelect = (id: number) => emit("select", id);
         <span v-if="childStatus.kind === 'blocked'">{{ childStatus.reason }}</span>
       </template>
     </ChildA>
+    <ChildB v-if="rank % 5 === 0" :item="item" :rank="rank + 2" @select="forwardSelect" />
 
   </article>
 </template>
