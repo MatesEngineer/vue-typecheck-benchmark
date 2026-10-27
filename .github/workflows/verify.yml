@@ -19,6 +19,6 @@ jobs:
         with:
           version: 1.3.0
           node-version: 24
-          cache: pnpm
+          cache: true
           run-install: true
       - run: vp run verify
