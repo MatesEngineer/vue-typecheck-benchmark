@@ -1,0 +1,9 @@
+{
+  "name": "@benchmark/vue-tsc-runner",
+  "version": "0.0.0",
+  "private": true,
+  "devDependencies": {
+    "typescript": "6.0.3",
+    "vue-tsc": "3.3.13"
+  }
+}

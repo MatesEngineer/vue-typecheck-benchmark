@@ -1,0 +1,27 @@
+{
+  "name": "vue-typecheck-benchmark",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@11.5.0",
+  "engines": {
+    "node": ">=24.0.0"
+  },
+  "scripts": {
+    "generate": "node scripts/generate-project.mjs",
+    "check:vue-tsc": "tools/vue-tsc/node_modules/.bin/vue-tsc --noEmit --pretty false -p tsconfig.vue-tsc.json",
+    "check:vue-tsgo": "tsc --runExternalCode --noEmit --pretty false -p tsconfig.vue-content-mapper.json",
+    "check:vue-tsrs": "tsrs --runExternalCode --noEmit --pretty false -p tsconfig.vue-content-mapper.json",
+    "check:vize-tsgo": "tsc --runExternalCode --noEmit --pretty false -p tsconfig.vize-content-mapper.json",
+    "check:vize-tsrs": "tsrs --runExternalCode --noEmit --pretty false -p tsconfig.vize-content-mapper.json",
+    "verify": "node scripts/verify-diagnostics.mjs",
+    "benchmark": "node scripts/benchmark.mjs"
+  },
+  "devDependencies": {
+    "@vue/content-mapper": "4.0.0-alpha.0",
+    "tsrs": "0.20.0-ts7.1.0-beta",
+    "typescript": "7.1.0-beta",
+    "vize": "0.595.0",
+    "vue": "3.5.44"
+  }
+}
