@@ -49,6 +49,36 @@ export function parseDiagnostics(output) {
   return { diagnostics, unparsed };
 }
 
+export function parseVizeDiagnostics(output) {
+  const diagnostics = [];
+  const unparsed = [];
+  let currentFile = null;
+
+  for (const line of output.split("\n")) {
+    const fileMatch = line.match(/(src\/generated\/GeneratedComponent\d{4}\.vue)\r?$/);
+    if (fileMatch) {
+      currentFile = fileMatch[1];
+      continue;
+    }
+
+    if (!line.includes("[TS")) continue;
+    const diagnosticMatch = line.match(/^\s+error:(\d+):(\d+) \[TS(\d+)\]/);
+    if (!currentFile || !diagnosticMatch) {
+      unparsed.push(line);
+      continue;
+    }
+
+    diagnostics.push({
+      file: currentFile,
+      line: Number.parseInt(diagnosticMatch[1], 10),
+      column: Number.parseInt(diagnosticMatch[2], 10),
+      code: Number.parseInt(diagnosticMatch[3], 10),
+    });
+  }
+
+  return { diagnostics, unparsed };
+}
+
 export function compareDiagnostics(id, output) {
   const { diagnostics, unparsed } = parseDiagnostics(output);
   const expected = new Set(expectedDiagnosticsFor(id).map(key));
@@ -78,6 +108,38 @@ export function assertExactDiagnostics(id, output, status, signal = null) {
   ) {
     throw new Error(
       `${id} diagnostics did not exactly match the fixture:\n${JSON.stringify(comparison, null, 2)}`,
+    );
+  }
+
+  return comparison.actual;
+}
+
+export function assertExactVizeDiagnostics(output, status, signal = null) {
+  if (signal || status === null) {
+    throw new Error(
+      `vize check terminated before producing diagnostics (status=${status}, signal=${signal})\n${output.slice(-4000)}`,
+    );
+  }
+  if (status === 0) throw new Error("vize check unexpectedly reported no diagnostics");
+
+  const { diagnostics, unparsed } = parseVizeDiagnostics(output);
+  const expected = new Set(expectedDiagnostics.map(key));
+  const actual = new Set(diagnostics.map(key));
+  const comparison = {
+    actual: [...actual].sort(),
+    expected: [...expected].sort(),
+    missing: [...expected].filter((item) => !actual.has(item)).sort(),
+    unexpected: [...actual].filter((item) => !expected.has(item)).sort(),
+    unparsed,
+  };
+
+  if (
+    comparison.missing.length > 0 ||
+    comparison.unexpected.length > 0 ||
+    comparison.unparsed.length > 0
+  ) {
+    throw new Error(
+      `vize check diagnostics did not exactly match the fixture:\n${JSON.stringify(comparison, null, 2)}`,
     );
   }
 

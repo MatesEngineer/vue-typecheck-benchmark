@@ -21,6 +21,7 @@ Requirements: [Vite+](https://viteplus.dev/) 1.3.0.
 vp install --frozen-lockfile
 vp run verify
 vp run benchmark
+vp run benchmark:vize-checkers
 ```
 
 `vp run verify` first requires an exact match on file, line, column, and TypeScript diagnostic code
@@ -29,6 +30,12 @@ and five measured fresh-process runs per checker. Vite+ task caching, compiler i
 Content Mapper caches, and `.tsbuildinfo` are not used. The operating system page cache is not
 flushed. Commands are rotated between iterations to reduce order bias. Both raw samples and a
 Markdown summary are written to `benchmark/results/`.
+
+`vp run benchmark:vize-checkers` separately measures `vize check` with `--servers 1` fixed and
+`--checkers 1,2,4,8`. Every fresh-process sample must pass the same exact diagnostic parity gate.
+Keeping the Corsa process count fixed isolates checker-worker scaling instead of changing two
+parallelism controls at once. Override the matrix with, for example,
+`vp run benchmark:vize-checkers --checkers 1,2,3,4 --runs 3`.
 
 Run an individual checker with Vite+:
 
@@ -54,17 +61,35 @@ not presented as interchangeable.
 
 Apple M5 Pro, 48 GiB RAM, Node.js 26.6.0; zero warmups and five fresh-process runs:
 
-| Checker | Median | Range | Speedup vs vue-tsc |
-| --- | ---: | ---: | ---: |
-| Vue Content Mapper + tsrs | 3.981 s | 3.780–4.091 s | 5.82x |
-| Vue Content Mapper + TypeScript 7.1 | 4.279 s | 4.214–5.137 s | 5.42x |
-| Vize Content Mapper + tsrs | 6.736 s | 6.705–6.755 s | 3.44x |
-| Vize Content Mapper + TypeScript 7.1 | 17.244 s | 16.876–17.920 s | 1.34x |
-| vue-tsc + TypeScript 6 | 23.186 s | 23.041–23.255 s | 1.00x |
+| Checker                              |   Median |           Range | Speedup vs vue-tsc |
+| ------------------------------------ | -------: | --------------: | -----------------: |
+| Vue Content Mapper + tsrs            |  3.981 s |   3.780–4.091 s |              5.82x |
+| Vue Content Mapper + TypeScript 7.1  |  4.279 s |   4.214–5.137 s |              5.42x |
+| Vize Content Mapper + tsrs           |  6.736 s |   6.705–6.755 s |              3.44x |
+| Vize Content Mapper + TypeScript 7.1 | 17.244 s | 16.876–17.920 s |              1.34x |
+| vue-tsc + TypeScript 6               | 23.186 s | 23.041–23.255 s |              1.00x |
 
 See the [Markdown report](./benchmark/results/2026-10-27T10-39-07Z.md) and
 [raw JSON](./benchmark/results/2026-10-27T10-39-07Z.json). Every measured invocation passed the
 exact 12-diagnostic parity gate.
+
+### `vize check` checker-worker scaling
+
+With the same machine and corpus, fixing `--servers 1` and changing only `--checkers` produced:
+
+| Checker workers per Corsa process |  Median |         Range | Speedup vs 1 checker |
+| --------------------------------: | ------: | ------------: | -------------------: |
+|                                 1 | 3.583 s | 3.539–3.862 s |                1.00x |
+|                                 2 | 3.571 s | 3.551–3.803 s |                1.00x |
+|                                 4 | 3.620 s | 3.584–3.699 s |                0.99x |
+|                                 8 | 3.578 s | 3.519–3.708 s |                1.00x |
+
+Increasing checker workers did not improve this single-project workload. The result suggests the
+measured cold path is dominated by serial work or offers too little independent checker work for
+this control to exploit; it does not prove that checker workers never help other project shapes.
+See the [checker-scaling report](./benchmark/results/vize-checkers-2026-10-27T11-09-51Z.md) and
+[raw JSON](./benchmark/results/vize-checkers-2026-10-27T11-09-51Z.json). Each of the 20 measured
+invocations independently passed the exact 12-diagnostic parity gate.
 
 ## Performance target
 

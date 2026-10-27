@@ -1,0 +1,57 @@
+{
+  "environment": {
+    "timestamp": "2026-10-27T11:09:51.740Z",
+    "hostname": "workstation",
+    "platform": "darwin 25.4.0",
+    "cpu": "Apple M5 Pro",
+    "logicalCpus": 15,
+    "totalMemoryBytes": 51539607552,
+    "freeMemoryBytesAtReport": 15412314112,
+    "node": "v26.6.0",
+    "componentCount": 2500,
+    "intentionalErrorSites": 12,
+    "vizeServers": 1,
+    "checkerCounts": [1, 2, 4, 8],
+    "cachePolicy": "fresh process; no compiler, mapper, task, or tsbuildinfo cache; OS page cache not flushed",
+    "warmups": 0,
+    "iterations": 5
+  },
+  "results": [
+    {
+      "checkers": 1,
+      "samplesMs": [3678.280833, 3582.840667, 3552.325125, 3539.267583, 3862.13675],
+      "meanMs": 3642.9701916,
+      "medianMs": 3582.840667,
+      "minMs": 3539.267583,
+      "maxMs": 3862.13675,
+      "standardDeviationMs": 119.88923268998374
+    },
+    {
+      "checkers": 2,
+      "samplesMs": [3551.47325, 3802.674917, 3570.764917, 3562.623666, 3701.690084],
+      "meanMs": 3637.8453668,
+      "medianMs": 3570.764917,
+      "minMs": 3551.47325,
+      "maxMs": 3802.674917,
+      "standardDeviationMs": 98.85662558534973
+    },
+    {
+      "checkers": 4,
+      "samplesMs": [3619.617958, 3584.363666, 3695.379459, 3587.835375, 3698.938833],
+      "meanMs": 3637.2270581999996,
+      "medianMs": 3619.617958,
+      "minMs": 3584.363666,
+      "maxMs": 3698.938833,
+      "standardDeviationMs": 50.46623005900797
+    },
+    {
+      "checkers": 8,
+      "samplesMs": [3519.261167, 3541.942458, 3577.594916, 3708.484959, 3635.008416],
+      "meanMs": 3596.4583832,
+      "medianMs": 3577.594916,
+      "minMs": 3519.261167,
+      "maxMs": 3708.484959,
+      "standardDeviationMs": 68.29829485221605
+    }
+  ]
+}

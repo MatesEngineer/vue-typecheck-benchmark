@@ -16,7 +16,8 @@
     "check:vize-tsrs": "tsrs --runExternalCode --noEmit --pretty false -p tsconfig.vize-content-mapper.json",
     "check:vize-cli": "vize check --tsconfig tsconfig.base.json --format text",
     "verify": "node scripts/verify-diagnostics.mjs",
-    "benchmark": "node scripts/benchmark.mjs"
+    "benchmark": "node scripts/benchmark.mjs",
+    "benchmark:vize-checkers": "node scripts/benchmark-vize-checkers.mjs"
   },
   "devDependencies": {
     "@vue/content-mapper": "4.0.0-alpha.0",
