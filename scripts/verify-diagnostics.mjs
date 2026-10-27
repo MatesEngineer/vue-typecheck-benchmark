@@ -1,11 +1,11 @@
 import { spawnSync } from "node:child_process";
 import { accessSync } from "node:fs";
-import { join } from "node:path";
+import { isAbsolute, join } from "node:path";
 import { commands, root } from "./commands.mjs";
 import { assertExactDiagnostics, expectedDiagnostics } from "./diagnostics.mjs";
 
 for (const command of commands) {
-  accessSync(join(root, command.executable));
+  accessSync(isAbsolute(command.executable) ? command.executable : join(root, command.executable));
   process.stdout.write(`Checking ${command.id}... `);
   const result = spawnSync(command.executable, command.args, {
     cwd: root,

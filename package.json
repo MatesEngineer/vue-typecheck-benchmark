@@ -9,7 +9,7 @@
   },
   "scripts": {
     "generate": "node scripts/generate-project.mjs",
-    "check:vue-tsc": "tools/vue-tsc/node_modules/.bin/vue-tsc --noEmit --pretty false -p tsconfig.vue-tsc.json",
+    "check:vue-tsc": "node --max-old-space-size=4096 tools/vue-tsc/node_modules/vue-tsc/bin/vue-tsc.js --noEmit --pretty false -p tsconfig.vue-tsc.json",
     "check:vue-tsgo": "tsc --runExternalCode --noEmit --pretty false -p tsconfig.vue-content-mapper.json",
     "check:vue-tsrs": "tsrs --runExternalCode --noEmit --pretty false -p tsconfig.vue-content-mapper.json",
     "check:vize-tsgo": "tsc --runExternalCode --noEmit --pretty false -p tsconfig.vize-content-mapper.json",

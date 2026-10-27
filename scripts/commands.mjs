@@ -8,8 +8,16 @@ export const commands = [
   {
     id: "vue-tsc",
     label: "vue-tsc 3.3.13 + TypeScript 6.0.3",
-    executable: `tools/vue-tsc/node_modules/.bin/vue-tsc${binSuffix}`,
-    args: ["--noEmit", "--pretty", "false", "-p", "tsconfig.vue-tsc.json"],
+    executable: process.execPath,
+    args: [
+      "--max-old-space-size=4096",
+      "tools/vue-tsc/node_modules/vue-tsc/bin/vue-tsc.js",
+      "--noEmit",
+      "--pretty",
+      "false",
+      "-p",
+      "tsconfig.vue-tsc.json",
+    ],
   },
   {
     id: "vue-tsgo",

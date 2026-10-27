@@ -56,14 +56,14 @@ Apple M5 Pro, 48 GiB RAM, Node.js 26.6.0; zero warmups and five fresh-process ru
 
 | Checker | Median | Range | Speedup vs vue-tsc |
 | --- | ---: | ---: | ---: |
-| Vue Content Mapper + tsrs | 3.493 s | 3.281–3.947 s | 6.55x |
-| Vue Content Mapper + TypeScript 7.1 | 4.365 s | 4.205–4.655 s | 5.24x |
-| Vize Content Mapper + tsrs | 6.688 s | 6.665–6.801 s | 3.42x |
-| Vize Content Mapper + TypeScript 7.1 | 15.851 s | 15.362–16.144 s | 1.44x |
-| vue-tsc + TypeScript 6 | 22.880 s | 22.797–22.910 s | 1.00x |
+| Vue Content Mapper + tsrs | 3.981 s | 3.780–4.091 s | 5.82x |
+| Vue Content Mapper + TypeScript 7.1 | 4.279 s | 4.214–5.137 s | 5.42x |
+| Vize Content Mapper + tsrs | 6.736 s | 6.705–6.755 s | 3.44x |
+| Vize Content Mapper + TypeScript 7.1 | 17.244 s | 16.876–17.920 s | 1.34x |
+| vue-tsc + TypeScript 6 | 23.186 s | 23.041–23.255 s | 1.00x |
 
-See the [Markdown report](./benchmark/results/2026-10-27T10-29-21Z.md) and
-[raw JSON](./benchmark/results/2026-10-27T10-29-21Z.json). Every measured invocation passed the
+See the [Markdown report](./benchmark/results/2026-10-27T10-39-07Z.md) and
+[raw JSON](./benchmark/results/2026-10-27T10-39-07Z.json). Every measured invocation passed the
 exact 12-diagnostic parity gate.
 
 ## Performance target
@@ -79,7 +79,8 @@ persisted mapper cache. Vize tracks the type-checker throughput work in
 `vue-tsc` and TypeScript 6 are isolated in
 [`tools/vue-tsc/package.json`](./tools/vue-tsc/package.json), while the root project owns TypeScript
 7.1, tsrs, and both Content Mappers. This keeps the incompatible TypeScript major versions in one
-workspace without changing the benchmark corpus.
+workspace without changing the benchmark corpus. Its Node.js process has an explicit 4 GiB old-space
+limit so the same 2,500-SFC command works under Node.js 24 and 26.
 
 To regenerate the checked-in corpus or change its size:
 
