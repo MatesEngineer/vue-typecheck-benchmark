@@ -5,8 +5,5 @@
       "package": "vize",
       "extensions": [".vue"]
     }
-  ],
-  "vueCompilerOptions": {
-    "checkUnknownProps": true
-  }
+  ]
 }

@@ -1,6 +1,15 @@
 <script setup lang="ts">
-import { computed } from "vue";
-import { formatScore, type BenchmarkItem } from "../shared";
+import { computed, useTemplateRef } from "vue";
+import {
+  firstTag,
+  formatScore,
+  getItemStatus,
+  type BenchmarkItem,
+  type ItemStatus,
+} from "../shared";
+import ChildA from "./GeneratedComponent0737.vue";
+import ChildB from "./GeneratedComponent0369.vue";
+
 
 const props = defineProps<{
   item: BenchmarkItem;
@@ -12,16 +21,47 @@ const emit = defineEmits<{
   rename: [value: string];
 }>();
 
+defineSlots<{
+  default(props: { value: string; status: ItemStatus }): unknown;
+}>();
+
 const normalized = computed(() => formatScore(props.item.score * props.rank));
+const status = computed(() => getItemStatus(props.item));
+const summary = computed(() => firstTag(props.item) + ":" + normalized.value);
 const select = () => emit("select", props.item.id);
+function focusRow(): string {
+  return props.item.label;
+}
+defineExpose({ focusRow });
+type ChildInstance = InstanceType<typeof ChildA>;
+const primaryChild = useTemplateRef<ChildInstance>("primaryChild");
+const childLabel = computed(() => primaryChild.value?.focusRow() ?? "");
+const forwardSelect = (id: number) => emit("select", id);
+
 
 </script>
 
 <template>
-  <article :data-component="'0738'" @click="select">
+  <article id="component-0738" @click="select">
     <h2>{{ item.label }}</h2>
     <output>{{ normalized }}</output>
-    <small>{{ item.tags.join(", ") }}</small>
+    <small>{{ summary }}</small>
+    <strong v-if="status.kind === 'ready'">{{ status.value.toFixed(1) }}</strong>
+    <strong v-else>{{ status.reason }}</strong>
+    <slot :value="normalized" :status="status" />
+    <span v-if="childLabel">{{ childLabel }}</span>
+    <ChildA
+      ref="primaryChild"
+      :item="item"
+      :rank="rank + 1"
+      @select="forwardSelect"
+    >
+      <template #default="{ value, status: childStatus }">
+        <span>{{ value }}</span>
+        <span v-if="childStatus.kind === 'blocked'">{{ childStatus.reason }}</span>
+      </template>
+    </ChildA>
+    <ChildB v-if="rank % 5 === 0" :item="item" :rank="rank + 2" @select="forwardSelect" />
 
   </article>
 </template>

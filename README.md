@@ -8,36 +8,84 @@ A reproducible large-project benchmark for five Vue type-checking paths:
 4. Vize's Content Mapper with TypeScript 7.1 (`tsc`)
 5. Vize's Content Mapper with `tsrs`
 
-The corpus contains 5,000 generated Vue SFCs and six intentional type-error sites spread across
-`<script setup>` and templates. Package versions are pinned in the lockfile.
-
-## Recorded result
-
-The first recorded run on an Apple M5 Pro found Vize + tsrs fastest at a 6.039 s median, 4.57x
-faster than the 27.599 s `vue-tsc` median. See the
-[full table and environment](./benchmark/results/2026-10-27T09-35-02Z.md) and
-[raw samples](./benchmark/results/2026-10-27T09-35-02Z.json).
+The corpus contains 2,500 generated Vue SFCs connected as a non-trivial dependency DAG. Components
+exercise typed props, emits, slots, discriminated unions, exposed methods, and typed
+`useTemplateRef()` access. Twelve intentional type-error sites are spread across `<script setup>` and
+templates. Package versions are pinned in the lockfile.
 
 ## Run
 
-Requirements: Node.js 24 or newer and pnpm 11.5.0.
+Requirements: [Vite+](https://viteplus.dev/) 1.3.0.
 
 ```sh
-pnpm install --frozen-lockfile
-pnpm verify
-pnpm benchmark
+vp install --frozen-lockfile
+vp run verify
+vp run benchmark
 ```
 
-`pnpm verify` first confirms that every checker finds all six intentional error sites. The benchmark
-then performs one warmup and five measured fresh-process runs per checker. Commands are rotated
-between iterations to reduce order bias. Both raw samples and a Markdown summary are written to
-`benchmark/results/`.
+`vp run verify` first requires an exact match on file, line, column, and TypeScript diagnostic code
+for all twelve intentional errors, with zero extra diagnostics. The benchmark then performs no warmup
+and five measured fresh-process runs per checker. Vite+ task caching, compiler incremental state,
+Content Mapper caches, and `.tsbuildinfo` are not used. The operating system page cache is not
+flushed. Commands are rotated between iterations to reduce order bias. Both raw samples and a
+Markdown summary are written to `benchmark/results/`.
+
+Run an individual checker with Vite+:
+
+```sh
+vp run check:vue-tsc
+vp run check:vue-tsgo
+vp run check:vue-tsrs
+vp run check:vize-tsgo
+vp run check:vize-tsrs
+```
+
+The standalone `vize check` path is tracked separately because it is not a Content Mapper and can
+serve projects before TypeScript 7.1:
+
+```sh
+vp run check:vize-cli
+```
+
+It is intentionally excluded from the five-way Content Mapper table so that unlike pipelines are
+not presented as interchangeable.
+
+## Recorded result
+
+Apple M5 Pro, 48 GiB RAM, Node.js 26.6.0; zero warmups and five fresh-process runs:
+
+| Checker | Median | Range | Speedup vs vue-tsc |
+| --- | ---: | ---: | ---: |
+| Vue Content Mapper + tsrs | 4.300 s | 3.885–4.587 s | 5.89x |
+| Vue Content Mapper + TypeScript 7.1 | 5.767 s | 5.198–6.118 s | 4.39x |
+| Vize Content Mapper + tsrs | 8.213 s | 7.705–8.695 s | 3.08x |
+| Vize Content Mapper + TypeScript 7.1 | 20.759 s | 18.985–21.598 s | 1.22x |
+| vue-tsc + TypeScript 6 | 25.337 s | 23.791–27.212 s | 1.00x |
+
+See the [Markdown report](./benchmark/results/2026-10-27T10-19-17Z.md) and
+[raw JSON](./benchmark/results/2026-10-27T10-19-17Z.json). Every measured invocation passed the
+exact 12-diagnostic parity gate.
+
+## Performance target
+
+The long-term target is a complete cold check of the 2,500-SFC corpus in less than 500 ms, including
+process startup and diagnostics. This repository records the end-to-end result. The corresponding
+Vize work needs lower-level Rust benchmarks for file discovery and reads, SFC parsing, template AST
+construction, virtual TypeScript generation, source-map lookup, dependency-graph construction, and
+allocation counts/bytes. The target does not permit a daemon, incremental compiler state, or a
+persisted mapper cache. Vize tracks the type-checker throughput work in
+[`ubugeeei-prod/vize#7698`](https://github.com/ubugeeei-prod/vize/issues/7698).
+
+`vue-tsc` and TypeScript 6 are isolated in
+[`tools/vue-tsc/package.json`](./tools/vue-tsc/package.json), while the root project owns TypeScript
+7.1, tsrs, and both Content Mappers. This keeps the incompatible TypeScript major versions in one
+workspace without changing the benchmark corpus.
 
 To regenerate the checked-in corpus or change its size:
 
 ```sh
-pnpm generate
-COMPONENT_COUNT=10000 pnpm generate
+vp run generate
+COMPONENT_COUNT=3000 vp run generate
 ```
 
 ## Configurations

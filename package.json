@@ -14,6 +14,7 @@
     "check:vue-tsrs": "tsrs --runExternalCode --noEmit --pretty false -p tsconfig.vue-content-mapper.json",
     "check:vize-tsgo": "tsc --runExternalCode --noEmit --pretty false -p tsconfig.vize-content-mapper.json",
     "check:vize-tsrs": "tsrs --runExternalCode --noEmit --pretty false -p tsconfig.vize-content-mapper.json",
+    "check:vize-cli": "vize check --tsconfig tsconfig.base.json --format text",
     "verify": "node scripts/verify-diagnostics.mjs",
     "benchmark": "node scripts/benchmark.mjs"
   },
@@ -22,6 +23,7 @@
     "tsrs": "0.20.0-ts7.1.0-beta",
     "typescript": "7.1.0-beta",
     "vize": "0.595.0",
+    "vite-plus": "1.3.0",
     "vue": "3.5.44"
   }
 }

@@ -3,10 +3,7 @@
   "contentMappers": [
     {
       "package": "@vue/content-mapper",
-      "extensions": [".vue"],
-      "options": {
-        "target": 3.5
-      }
+      "extensions": [".vue"]
     }
   ]
 }

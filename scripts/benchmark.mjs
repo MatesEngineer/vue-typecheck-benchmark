@@ -1,8 +1,9 @@
 import { spawnSync } from "node:child_process";
-import { mkdirSync, writeFileSync } from "node:fs";
+import { mkdirSync, readdirSync, writeFileSync } from "node:fs";
 import { cpus, freemem, hostname, platform, release, totalmem } from "node:os";
 import { join } from "node:path";
 import { commands, root } from "./commands.mjs";
+import { assertExactDiagnostics, expectedDiagnostics } from "./diagnostics.mjs";
 
 const readNumberArgument = (name, fallback) => {
   const index = process.argv.indexOf(name);
@@ -12,7 +13,7 @@ const readNumberArgument = (name, fallback) => {
 };
 
 const iterations = readNumberArgument("--runs", 5);
-const warmups = readNumberArgument("--warmup", 1);
+const warmups = readNumberArgument("--warmup", 0);
 if (iterations < 1) throw new Error("--runs must be at least 1");
 
 function run(command) {
@@ -24,7 +25,7 @@ function run(command) {
   });
   const durationMs = Number(process.hrtime.bigint() - start) / 1_000_000;
   if (result.error) throw result.error;
-  if (result.status === 0) throw new Error(`${command.id} unexpectedly reported no diagnostics`);
+  assertExactDiagnostics(command.id, `${result.stdout}\n${result.stderr}`, result.status);
   return durationMs;
 }
 
@@ -69,6 +70,9 @@ const results = commands.map((command) => {
 });
 
 const baseline = results.find((result) => result.id === "vue-tsc").medianMs;
+const componentCount = readdirSync(join(root, "src", "generated")).filter((file) =>
+  file.endsWith(".vue"),
+).length;
 const environment = {
   timestamp: new Date().toISOString(),
   hostname: hostname(),
@@ -78,8 +82,9 @@ const environment = {
   totalMemoryBytes: totalmem(),
   freeMemoryBytesAtReport: freemem(),
   node: process.version,
-  componentCount: 5000,
-  intentionalErrorSites: 6,
+  componentCount,
+  intentionalErrorSites: expectedDiagnostics.length,
+  cachePolicy: "fresh process; no compiler, mapper, task, or tsbuildinfo cache; OS page cache not flushed",
   warmups,
   iterations,
 };
@@ -105,6 +110,7 @@ const markdown = `# Vue typecheck benchmark
 - Machine: ${environment.cpu}, ${(environment.totalMemoryBytes / 1024 ** 3).toFixed(0)} GiB RAM
 - Runtime: ${environment.node}, ${environment.platform}
 - Corpus: ${environment.componentCount.toLocaleString("en-US")} Vue SFCs, ${environment.intentionalErrorSites} intentional error sites
+- Cache policy: ${environment.cachePolicy}
 - Method: ${environment.warmups} warmup + ${environment.iterations} measured process runs per command; median shown
 
 | Checker | Median | Range | Speedup vs vue-tsc |
