@@ -1,0 +1,86 @@
+{
+  "environment": {
+    "timestamp": "2026-11-04T04:52:11.933Z",
+    "hostname": "workstation",
+    "platform": "darwin 25.4.0",
+    "cpu": "Apple M5 Pro",
+    "logicalCpus": 15,
+    "totalMemoryBytes": 51539607552,
+    "freeMemoryBytesAtReport": 7109853184,
+    "node": "v26.12.1",
+    "componentCount": 2500,
+    "intentionalErrorSites": 12,
+    "vizeServers": 1,
+    "checkerCounts": [
+      1,
+      2,
+      4,
+      8
+    ],
+    "cachePolicy": "fresh process and fresh HOME per run; no compiler, mapper, task, persisted Vize project, or tsbuildinfo cache; OS page cache not flushed",
+    "warmups": 0,
+    "iterations": 5
+  },
+  "results": [
+    {
+      "checkers": 1,
+      "samplesMs": [
+        26198.675541,
+        24742.147833,
+        25969.921334,
+        26166.613291,
+        24838.364583
+      ],
+      "meanMs": 25583.1445164,
+      "medianMs": 25969.921334,
+      "minMs": 24742.147833,
+      "maxMs": 26198.675541,
+      "standardDeviationMs": 652.8220478041851
+    },
+    {
+      "checkers": 2,
+      "samplesMs": [
+        14931.676,
+        16684.9625,
+        14832.340542,
+        14828.082208,
+        13972.771458
+      ],
+      "meanMs": 15049.9665416,
+      "medianMs": 14832.340542,
+      "minMs": 13972.771458,
+      "maxMs": 16684.9625,
+      "standardDeviationMs": 888.1607306729327
+    },
+    {
+      "checkers": 4,
+      "samplesMs": [
+        10283.945875,
+        8703.021417,
+        8654.598208,
+        8304.092459,
+        8502.342375
+      ],
+      "meanMs": 8889.600066800002,
+      "medianMs": 8654.598208,
+      "minMs": 8304.092459,
+      "maxMs": 10283.945875,
+      "standardDeviationMs": 710.9184732014634
+    },
+    {
+      "checkers": 8,
+      "samplesMs": [
+        8860.155542,
+        7425.574209,
+        7719.574834,
+        7811.470625,
+        7189.964958
+      ],
+      "meanMs": 7801.348033599999,
+      "medianMs": 7719.574834,
+      "minMs": 7189.964958,
+      "maxMs": 8860.155542,
+      "standardDeviationMs": 573.2116354817507
+    }
+  ]
+}

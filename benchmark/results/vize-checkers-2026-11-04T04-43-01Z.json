@@ -1,0 +1,86 @@
+{
+  "environment": {
+    "timestamp": "2026-11-04T04:43:01.623Z",
+    "hostname": "workstation",
+    "platform": "darwin 25.4.0",
+    "cpu": "Apple M5 Pro",
+    "logicalCpus": 15,
+    "totalMemoryBytes": 51539607552,
+    "freeMemoryBytesAtReport": 6256410624,
+    "node": "v26.12.1",
+    "componentCount": 2500,
+    "intentionalErrorSites": 12,
+    "vizeServers": 1,
+    "checkerCounts": [
+      1,
+      2,
+      4,
+      8
+    ],
+    "cachePolicy": "fresh process and fresh HOME per run; no compiler, mapper, task, persisted Vize project, or tsbuildinfo cache; OS page cache not flushed",
+    "warmups": 0,
+    "iterations": 5
+  },
+  "results": [
+    {
+      "checkers": 1,
+      "samplesMs": [
+        26820.954166,
+        26270.056625,
+        25874.061167,
+        24234.187209,
+        24394.201542
+      ],
+      "meanMs": 25518.6921418,
+      "medianMs": 25874.061167,
+      "minMs": 24234.187209,
+      "maxMs": 26820.954166,
+      "standardDeviationMs": 1029.675108156508
+    },
+    {
+      "checkers": 2,
+      "samplesMs": [
+        14884.054166,
+        14520.672208,
+        13660.019,
+        13725.482583,
+        13651.827958
+      ],
+      "meanMs": 14088.411182999998,
+      "medianMs": 13725.482583,
+      "minMs": 13651.827958,
+      "maxMs": 14884.054166,
+      "standardDeviationMs": 514.9251001138038
+    },
+    {
+      "checkers": 4,
+      "samplesMs": [
+        13646.329,
+        10580.358833,
+        9114.494708,
+        8471.062417,
+        8533.9805
+      ],
+      "meanMs": 10069.2450916,
+      "medianMs": 9114.494708,
+      "minMs": 8471.062417,
+      "maxMs": 13646.329,
+      "standardDeviationMs": 1943.1695791658947
+    },
+    {
+      "checkers": 8,
+      "samplesMs": [
+        8597.6755,
+        8947.800708,
+        7504.475208,
+        7567.488791,
+        7888.234666
+      ],
+      "meanMs": 8101.1349746,
+      "medianMs": 7888.234666,
+      "minMs": 7504.475208,
+      "maxMs": 8947.800708,
+      "standardDeviationMs": 574.3697459355351
+    }
+  ]
+}
