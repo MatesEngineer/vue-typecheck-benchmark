@@ -1,6 +1,6 @@
 import { spawnSync } from "node:child_process";
-import { mkdirSync, readdirSync, writeFileSync } from "node:fs";
-import { cpus, freemem, hostname, platform, release, totalmem } from "node:os";
+import { mkdirSync, mkdtempSync, readdirSync, rmSync, writeFileSync } from "node:fs";
+import { cpus, freemem, hostname, platform, release, tmpdir, totalmem } from "node:os";
 import { join } from "node:path";
 import { root } from "./commands.mjs";
 import { assertExactVizeDiagnostics, expectedDiagnostics } from "./diagnostics.mjs";
@@ -45,13 +45,18 @@ function run(checkers) {
     "--checkers",
     String(checkers),
   ];
+  // vize check persists a per-project virtual project and .tsbuildinfo under the user cache
+  // directory (dirs::cache_dir(), derived from HOME). A fresh HOME keeps every sample cold.
+  const home = mkdtempSync(join(tmpdir(), "vize-checkers-home-"));
   const start = process.hrtime.bigint();
   const result = spawnSync(executable, args, {
     cwd: root,
+    env: { ...process.env, HOME: home, XDG_CACHE_HOME: join(home, ".cache") },
     encoding: "utf8",
     maxBuffer: 64 * 1024 * 1024,
   });
   const durationMs = Number(process.hrtime.bigint() - start) / 1_000_000;
+  rmSync(home, { recursive: true, force: true });
   if (result.error) throw result.error;
   const output = `${result.stdout}\n${result.stderr}`;
   assertExactVizeDiagnostics(output, result.status, result.signal);
@@ -117,7 +122,7 @@ const environment = {
   vizeServers: servers,
   checkerCounts,
   cachePolicy:
-    "fresh process; no compiler, mapper, task, or tsbuildinfo cache; OS page cache not flushed",
+    "fresh process and fresh HOME per run; no compiler, mapper, task, persisted Vize project, or tsbuildinfo cache; OS page cache not flushed",
   warmups,
   iterations,
 };
