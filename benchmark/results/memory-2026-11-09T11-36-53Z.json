@@ -1,0 +1,337 @@
+{
+  "environment": {
+    "timestamp": "2026-11-09T11:36:53.481Z",
+    "hostname": "workstation",
+    "platform": "darwin 25.4.0",
+    "cpu": "Apple M5 Pro",
+    "logicalCpus": 15,
+    "totalMemoryBytes": 51539607552,
+    "node": "v26.13.0",
+    "intentionalErrorSites": 12,
+    "metric": "peak resident set size of the spawned process tree (checker, Content Mapper, and wrappers), sampled with ps; shared pages are counted once per process",
+    "samplingIntervalMs": 100,
+    "cachePolicy": "fresh process; no compiler, mapper, task, or tsbuildinfo cache; vize check also uses a fresh HOME per run",
+    "iterations": 3
+  },
+  "results": [
+    {
+      "id": "vue-tsrs-fast",
+      "label": "@vue/content-mapper 4.0.0-alpha.0 + tsrs 0.23.0 --fast",
+      "samples": [
+        {
+          "peakTotal": 2176729088,
+          "peakLargest": 1522089984,
+          "peakProcesses": 6,
+          "samples": 28
+        },
+        {
+          "peakTotal": 2326691840,
+          "peakLargest": 1505312768,
+          "peakProcesses": 6,
+          "samples": 55
+        },
+        {
+          "peakTotal": 2152693760,
+          "peakLargest": 1509523456,
+          "peakProcesses": 6,
+          "samples": 30
+        }
+      ],
+      "medianPeakTreeRssBytes": 2176729088,
+      "minPeakTreeRssBytes": 2152693760,
+      "maxPeakTreeRssBytes": 2326691840,
+      "medianPeakLargestProcessRssBytes": 1509523456,
+      "maxProcesses": 6
+    },
+    {
+      "id": "vize-tsrs-fast",
+      "label": "Vize 0.718.0 Content Mapper + tsrs 0.23.0 --fast",
+      "samples": [
+        {
+          "peakTotal": 2228551680,
+          "peakLargest": 2143584256,
+          "peakProcesses": 2,
+          "samples": 13
+        },
+        {
+          "peakTotal": 2245050368,
+          "peakLargest": 2162737152,
+          "peakProcesses": 2,
+          "samples": 21
+        },
+        {
+          "peakTotal": 2183757824,
+          "peakLargest": 2099560448,
+          "peakProcesses": 2,
+          "samples": 13
+        }
+      ],
+      "medianPeakTreeRssBytes": 2228551680,
+      "minPeakTreeRssBytes": 2183757824,
+      "maxPeakTreeRssBytes": 2245050368,
+      "medianPeakLargestProcessRssBytes": 2143584256,
+      "maxProcesses": 2
+    },
+    {
+      "id": "vize-tsrs",
+      "label": "Vize 0.718.0 Content Mapper + tsrs 0.23.0",
+      "samples": [
+        {
+          "peakTotal": 2498838528,
+          "peakLargest": 2414362624,
+          "peakProcesses": 2,
+          "samples": 24
+        },
+        {
+          "peakTotal": 2473213952,
+          "peakLargest": 2391916544,
+          "peakProcesses": 2,
+          "samples": 38
+        },
+        {
+          "peakTotal": 2462056448,
+          "peakLargest": 2377728000,
+          "peakProcesses": 2,
+          "samples": 25
+        }
+      ],
+      "medianPeakTreeRssBytes": 2473213952,
+      "minPeakTreeRssBytes": 2462056448,
+      "maxPeakTreeRssBytes": 2498838528,
+      "medianPeakLargestProcessRssBytes": 2391916544,
+      "maxProcesses": 2
+    },
+    {
+      "id": "vue-tsrs",
+      "label": "@vue/content-mapper 4.0.0-alpha.0 + tsrs 0.23.0",
+      "samples": [
+        {
+          "peakTotal": 2509783040,
+          "peakLargest": 1513586688,
+          "peakProcesses": 6,
+          "samples": 31
+        },
+        {
+          "peakTotal": 2480603136,
+          "peakLargest": 1554956288,
+          "peakProcesses": 6,
+          "samples": 32
+        },
+        {
+          "peakTotal": 2431680512,
+          "peakLargest": 1519812608,
+          "peakProcesses": 6,
+          "samples": 34
+        }
+      ],
+      "medianPeakTreeRssBytes": 2480603136,
+      "minPeakTreeRssBytes": 2431680512,
+      "maxPeakTreeRssBytes": 2509783040,
+      "medianPeakLargestProcessRssBytes": 1519812608,
+      "maxProcesses": 6
+    },
+    {
+      "id": "vue-tsgo",
+      "label": "@vue/content-mapper 4.0.0-alpha.0 + TypeScript 7.1 beta (tsc)",
+      "samples": [
+        {
+          "peakTotal": 3680026624,
+          "peakLargest": 1905410048,
+          "peakProcesses": 6,
+          "samples": 40
+        },
+        {
+          "peakTotal": 3641163776,
+          "peakLargest": 1901592576,
+          "peakProcesses": 6,
+          "samples": 56
+        },
+        {
+          "peakTotal": 3625582592,
+          "peakLargest": 1885667328,
+          "peakProcesses": 6,
+          "samples": 48
+        }
+      ],
+      "medianPeakTreeRssBytes": 3641163776,
+      "minPeakTreeRssBytes": 3625582592,
+      "maxPeakTreeRssBytes": 3680026624,
+      "medianPeakLargestProcessRssBytes": 1901592576,
+      "maxProcesses": 6
+    },
+    {
+      "id": "vue-tsc",
+      "label": "vue-tsc 3.3.13 + TypeScript 6.0.3",
+      "samples": [
+        {
+          "peakTotal": 3996811264,
+          "peakLargest": 3996811264,
+          "peakProcesses": 1,
+          "samples": 202
+        },
+        {
+          "peakTotal": 3951165440,
+          "peakLargest": 3951165440,
+          "peakProcesses": 1,
+          "samples": 224
+        },
+        {
+          "peakTotal": 3923116032,
+          "peakLargest": 3923116032,
+          "peakProcesses": 1,
+          "samples": 215
+        }
+      ],
+      "medianPeakTreeRssBytes": 3951165440,
+      "minPeakTreeRssBytes": 3923116032,
+      "maxPeakTreeRssBytes": 3996811264,
+      "medianPeakLargestProcessRssBytes": 3951165440,
+      "maxProcesses": 1
+    },
+    {
+      "id": "vize-check-1",
+      "label": "vize check (1 checker, 1 Corsa server)",
+      "samples": [
+        {
+          "peakTotal": 5243764736,
+          "peakLargest": 4913610752,
+          "peakProcesses": 2,
+          "samples": 211
+        },
+        {
+          "peakTotal": 5238784000,
+          "peakLargest": 4908449792,
+          "peakProcesses": 2,
+          "samples": 291
+        },
+        {
+          "peakTotal": 5509349376,
+          "peakLargest": 5179604992,
+          "peakProcesses": 2,
+          "samples": 210
+        }
+      ],
+      "medianPeakTreeRssBytes": 5243764736,
+      "minPeakTreeRssBytes": 5238784000,
+      "maxPeakTreeRssBytes": 5509349376,
+      "medianPeakLargestProcessRssBytes": 4913610752,
+      "maxProcesses": 2
+    },
+    {
+      "id": "vize-check-2",
+      "label": "vize check (2 checkers, 1 Corsa server)",
+      "samples": [
+        {
+          "peakTotal": 5485821952,
+          "peakLargest": 5155389440,
+          "peakProcesses": 2,
+          "samples": 116
+        },
+        {
+          "peakTotal": 5253562368,
+          "peakLargest": 4924080128,
+          "peakProcesses": 2,
+          "samples": 160
+        },
+        {
+          "peakTotal": 5479530496,
+          "peakLargest": 5150638080,
+          "peakProcesses": 2,
+          "samples": 116
+        }
+      ],
+      "medianPeakTreeRssBytes": 5479530496,
+      "minPeakTreeRssBytes": 5253562368,
+      "maxPeakTreeRssBytes": 5485821952,
+      "medianPeakLargestProcessRssBytes": 5150638080,
+      "maxProcesses": 2
+    },
+    {
+      "id": "vize-check-4",
+      "label": "vize check (4 checkers, 1 Corsa server)",
+      "samples": [
+        {
+          "peakTotal": 5561876480,
+          "peakLargest": 5232476160,
+          "peakProcesses": 2,
+          "samples": 81
+        },
+        {
+          "peakTotal": 5540233216,
+          "peakLargest": 5210800128,
+          "peakProcesses": 2,
+          "samples": 96
+        },
+        {
+          "peakTotal": 5556371456,
+          "peakLargest": 5225070592,
+          "peakProcesses": 2,
+          "samples": 71
+        }
+      ],
+      "medianPeakTreeRssBytes": 5556371456,
+      "minPeakTreeRssBytes": 5540233216,
+      "maxPeakTreeRssBytes": 5561876480,
+      "medianPeakLargestProcessRssBytes": 5225070592,
+      "maxProcesses": 2
+    },
+    {
+      "id": "vize-tsgo",
+      "label": "Vize 0.718.0 Content Mapper + TypeScript 7.1 beta (tsc)",
+      "samples": [
+        {
+          "peakTotal": 5739970560,
+          "peakLargest": 5658771456,
+          "peakProcesses": 2,
+          "samples": 66
+        },
+        {
+          "peakTotal": 5659754496,
+          "peakLargest": 5578113024,
+          "peakProcesses": 2,
+          "samples": 94
+        },
+        {
+          "peakTotal": 5662801920,
+          "peakLargest": 5581602816,
+          "peakProcesses": 2,
+          "samples": 67
+        }
+      ],
+      "medianPeakTreeRssBytes": 5662801920,
+      "minPeakTreeRssBytes": 5659754496,
+      "maxPeakTreeRssBytes": 5739970560,
+      "medianPeakLargestProcessRssBytes": 5581602816,
+      "maxProcesses": 2
+    },
+    {
+      "id": "vize-check-8",
+      "label": "vize check (8 checkers, 1 Corsa server)",
+      "samples": [
+        {
+          "peakTotal": 5940068352,
+          "peakLargest": 5610586112,
+          "peakProcesses": 2,
+          "samples": 61
+        },
+        {
+          "peakTotal": 6004260864,
+          "peakLargest": 5675204608,
+          "peakProcesses": 2,
+          "samples": 77
+        },
+        {
+          "peakTotal": 6385090560,
+          "peakLargest": 6054903808,
+          "peakProcesses": 2,
+          "samples": 59
+        }
+      ],
+      "medianPeakTreeRssBytes": 6004260864,
+      "minPeakTreeRssBytes": 5940068352,
+      "maxPeakTreeRssBytes": 6385090560,
+      "medianPeakLargestProcessRssBytes": 5675204608,
+      "maxProcesses": 2
+    }
+  ]
+}

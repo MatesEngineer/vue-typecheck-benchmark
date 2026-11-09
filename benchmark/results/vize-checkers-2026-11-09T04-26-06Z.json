@@ -1,0 +1,86 @@
+{
+  "environment": {
+    "timestamp": "2026-11-09T04:26:06.585Z",
+    "hostname": "workstation",
+    "platform": "darwin 25.4.0",
+    "cpu": "Apple M5 Pro",
+    "logicalCpus": 15,
+    "totalMemoryBytes": 51539607552,
+    "freeMemoryBytesAtReport": 18416877568,
+    "node": "v26.12.1",
+    "componentCount": 2500,
+    "intentionalErrorSites": 12,
+    "vizeServers": 1,
+    "checkerCounts": [
+      1,
+      2,
+      4,
+      8
+    ],
+    "cachePolicy": "fresh process and fresh HOME per run; no compiler, mapper, task, persisted Vize project, or tsbuildinfo cache; OS page cache not flushed",
+    "warmups": 0,
+    "iterations": 5
+  },
+  "results": [
+    {
+      "checkers": 1,
+      "samplesMs": [
+        25643.260916,
+        25534.3315,
+        26465.623834,
+        23834.0965,
+        24890.119375
+      ],
+      "meanMs": 25273.486425,
+      "medianMs": 25534.3315,
+      "minMs": 23834.0965,
+      "maxMs": 26465.623834,
+      "standardDeviationMs": 876.9012008773294
+    },
+    {
+      "checkers": 2,
+      "samplesMs": [
+        13660.047208,
+        13847.311125,
+        14137.447167,
+        14215.727,
+        13644.418958
+      ],
+      "meanMs": 13900.9902916,
+      "medianMs": 13847.311125,
+      "minMs": 13644.418958,
+      "maxMs": 14215.727,
+      "standardDeviationMs": 237.37519719853964
+    },
+    {
+      "checkers": 4,
+      "samplesMs": [
+        8315.195792,
+        8662.653459,
+        8604.583542,
+        8377.594709,
+        8491.944708
+      ],
+      "meanMs": 8490.394442,
+      "medianMs": 8491.944708,
+      "minMs": 8315.195792,
+      "maxMs": 8662.653459,
+      "standardDeviationMs": 131.2501958459341
+    },
+    {
+      "checkers": 8,
+      "samplesMs": [
+        7611.015375,
+        8417.677875,
+        7553.807917,
+        6989.627125,
+        7149.193708
+      ],
+      "meanMs": 7544.2644,
+      "medianMs": 7553.807917,
+      "minMs": 6989.627125,
+      "maxMs": 8417.677875,
+      "standardDeviationMs": 496.20585006397073
+    }
+  ]
+}

@@ -1,0 +1,86 @@
+{
+  "environment": {
+    "timestamp": "2026-11-09T11:30:59.978Z",
+    "hostname": "workstation",
+    "platform": "darwin 25.4.0",
+    "cpu": "Apple M5 Pro",
+    "logicalCpus": 15,
+    "totalMemoryBytes": 51539607552,
+    "freeMemoryBytesAtReport": 6037798912,
+    "node": "v26.13.0",
+    "componentCount": 2500,
+    "intentionalErrorSites": 12,
+    "vizeServers": 1,
+    "checkerCounts": [
+      1,
+      2,
+      4,
+      8
+    ],
+    "cachePolicy": "fresh process and fresh HOME per run; no compiler, mapper, task, persisted Vize project, or tsbuildinfo cache; OS page cache not flushed",
+    "warmups": 0,
+    "iterations": 5
+  },
+  "results": [
+    {
+      "checkers": 1,
+      "samplesMs": [
+        26239.1235,
+        24047.599,
+        24018.605292,
+        25726.528667,
+        24163.215625
+      ],
+      "meanMs": 24839.0144168,
+      "medianMs": 24163.215625,
+      "minMs": 24018.605292,
+      "maxMs": 26239.1235,
+      "standardDeviationMs": 949.1154292465563
+    },
+    {
+      "checkers": 2,
+      "samplesMs": [
+        13655.345459,
+        13520.156458,
+        13293.275625,
+        13931.810584,
+        13449.889042
+      ],
+      "meanMs": 13570.0954336,
+      "medianMs": 13520.156458,
+      "minMs": 13293.275625,
+      "maxMs": 13931.810584,
+      "standardDeviationMs": 215.25710262772105
+    },
+    {
+      "checkers": 4,
+      "samplesMs": [
+        8328.992667,
+        8159.396875,
+        8262.702,
+        12204.059625,
+        8211.166542
+      ],
+      "meanMs": 9033.2635418,
+      "medianMs": 8262.702,
+      "minMs": 8159.396875,
+      "maxMs": 12204.059625,
+      "standardDeviationMs": 1586.3919304165356
+    },
+    {
+      "checkers": 8,
+      "samplesMs": [
+        7782.609416,
+        6807.560625,
+        7001.601625,
+        6624.530708,
+        6511.622209
+      ],
+      "meanMs": 6945.5849166,
+      "medianMs": 6807.560625,
+      "minMs": 6511.622209,
+      "maxMs": 7782.609416,
+      "standardDeviationMs": 450.3771809794028
+    }
+  ]
+}
