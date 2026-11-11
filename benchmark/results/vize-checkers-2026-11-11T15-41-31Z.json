@@ -1,0 +1,57 @@
+{
+  "environment": {
+    "timestamp": "2026-11-11T15:41:31.140Z",
+    "hostname": "ubugeeei-MacBook-Pro",
+    "platform": "darwin 25.6.0",
+    "cpu": "Apple M2 Max",
+    "logicalCpus": 12,
+    "totalMemoryBytes": 103079215104,
+    "freeMemoryBytesAtReport": 28997238784,
+    "node": "v26.13.0",
+    "componentCount": 2500,
+    "intentionalErrorSites": 12,
+    "vizeServers": 1,
+    "checkerCounts": [1, 2, 4, 8],
+    "cachePolicy": "fresh process and fresh HOME per run; no compiler, mapper, task, persisted Vize project, or tsbuildinfo cache; OS page cache not flushed",
+    "warmups": 0,
+    "iterations": 5
+  },
+  "results": [
+    {
+      "checkers": 1,
+      "samplesMs": [4336.896875, 4263.872333, 4212.677959, 4656.888, 4240.107458],
+      "meanMs": 4342.088525000001,
+      "medianMs": 4263.872333,
+      "minMs": 4212.677959,
+      "maxMs": 4656.888,
+      "standardDeviationMs": 162.7210299868322
+    },
+    {
+      "checkers": 2,
+      "samplesMs": [2777.439959, 2654.225625, 2729.250125, 2725.373, 2642.814375],
+      "meanMs": 2705.8206168,
+      "medianMs": 2725.373,
+      "minMs": 2642.814375,
+      "maxMs": 2777.439959,
+      "standardDeviationMs": 50.383325426288266
+    },
+    {
+      "checkers": 4,
+      "samplesMs": [1939.804167, 1942.912875, 1914.651083, 1866.884791, 1943.834875],
+      "meanMs": 1921.6175582,
+      "medianMs": 1939.804167,
+      "minMs": 1866.884791,
+      "maxMs": 1943.834875,
+      "standardDeviationMs": 29.40088435788889
+    },
+    {
+      "checkers": 8,
+      "samplesMs": [1563.276875, 1557.836792, 1520.15, 1673.20975, 1668.10175],
+      "meanMs": 1596.5150334,
+      "medianMs": 1563.276875,
+      "minMs": 1520.15,
+      "maxMs": 1673.20975,
+      "standardDeviationMs": 62.35244567092183
+    }
+  ]
+}
