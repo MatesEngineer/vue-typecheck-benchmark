@@ -1,0 +1,86 @@
+{
+  "environment": {
+    "timestamp": "2026-11-10T12:22:57.697Z",
+    "hostname": "workstation",
+    "platform": "darwin 25.4.0",
+    "cpu": "Apple M5 Pro",
+    "logicalCpus": 15,
+    "totalMemoryBytes": 51539607552,
+    "freeMemoryBytesAtReport": 4319330304,
+    "node": "v26.13.0",
+    "componentCount": 2500,
+    "intentionalErrorSites": 12,
+    "vizeServers": 1,
+    "checkerCounts": [
+      1,
+      2,
+      4,
+      8
+    ],
+    "cachePolicy": "fresh process and fresh HOME per run; no compiler, mapper, task, persisted Vize project, or tsbuildinfo cache; OS page cache not flushed",
+    "warmups": 0,
+    "iterations": 5
+  },
+  "results": [
+    {
+      "checkers": 1,
+      "samplesMs": [
+        14443.733292,
+        13986.113667,
+        14150.178125,
+        14527.120333,
+        13452.663833
+      ],
+      "meanMs": 14111.961850000002,
+      "medianMs": 14150.178125,
+      "minMs": 13452.663833,
+      "maxMs": 14527.120333,
+      "standardDeviationMs": 383.2495217982746
+    },
+    {
+      "checkers": 2,
+      "samplesMs": [
+        8750.434375,
+        8632.910375,
+        8352.693709,
+        8017.794334,
+        7985.919666
+      ],
+      "meanMs": 8347.9504918,
+      "medianMs": 8352.693709,
+      "minMs": 7985.919666,
+      "maxMs": 8750.434375,
+      "standardDeviationMs": 310.8978342610974
+    },
+    {
+      "checkers": 4,
+      "samplesMs": [
+        7124.219583,
+        5372.269917,
+        5411.639917,
+        5268.25875,
+        5141.71125
+      ],
+      "meanMs": 5663.619883400001,
+      "medianMs": 5372.269917,
+      "minMs": 5141.71125,
+      "maxMs": 7124.219583,
+      "standardDeviationMs": 736.2647942528047
+    },
+    {
+      "checkers": 8,
+      "samplesMs": [
+        5233.644916,
+        4704.945291,
+        4745.461375,
+        5166.557209,
+        4288.20225
+      ],
+      "meanMs": 4827.7622082,
+      "medianMs": 4745.461375,
+      "minMs": 4288.20225,
+      "maxMs": 5233.644916,
+      "standardDeviationMs": 344.23979893290766
+    }
+  ]
+}
