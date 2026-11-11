@@ -1,0 +1,86 @@
+{
+  "environment": {
+    "timestamp": "2026-11-11T11:24:15.330Z",
+    "hostname": "workstation",
+    "platform": "darwin 25.4.0",
+    "cpu": "Apple M5 Pro",
+    "logicalCpus": 15,
+    "totalMemoryBytes": 51539607552,
+    "freeMemoryBytesAtReport": 7605174272,
+    "node": "v26.13.0",
+    "componentCount": 2500,
+    "intentionalErrorSites": 12,
+    "vizeServers": 1,
+    "checkerCounts": [
+      1,
+      2,
+      4,
+      8
+    ],
+    "cachePolicy": "fresh process and fresh HOME per run; no compiler, mapper, task, persisted Vize project, or tsbuildinfo cache; OS page cache not flushed",
+    "warmups": 0,
+    "iterations": 5
+  },
+  "results": [
+    {
+      "checkers": 1,
+      "samplesMs": [
+        3823.611917,
+        3758.512042,
+        3935.2355,
+        3763.764042,
+        3708.61325
+      ],
+      "meanMs": 3797.947350199999,
+      "medianMs": 3763.764042,
+      "minMs": 3708.61325,
+      "maxMs": 3935.2355,
+      "standardDeviationMs": 77.73149891184102
+    },
+    {
+      "checkers": 2,
+      "samplesMs": [
+        2338.355417,
+        2328.309458,
+        2385.489541,
+        2421.191,
+        2644.934042
+      ],
+      "meanMs": 2423.6558916000004,
+      "medianMs": 2385.489541,
+      "minMs": 2328.309458,
+      "maxMs": 2644.934042,
+      "standardDeviationMs": 115.5801706352705
+    },
+    {
+      "checkers": 4,
+      "samplesMs": [
+        1688.354792,
+        1671.410666,
+        1805.527291,
+        1663.079458,
+        1726.617333
+      ],
+      "meanMs": 1710.997908,
+      "medianMs": 1688.354792,
+      "minMs": 1663.079458,
+      "maxMs": 1805.527291,
+      "standardDeviationMs": 52.06881786530179
+    },
+    {
+      "checkers": 8,
+      "samplesMs": [
+        1309.733375,
+        1350.311709,
+        1462.457833,
+        1358.135833,
+        1411.7865
+      ],
+      "meanMs": 1378.48505,
+      "medianMs": 1358.135833,
+      "minMs": 1309.733375,
+      "maxMs": 1462.457833,
+      "standardDeviationMs": 53.094322573677424
+    }
+  ]
+}

@@ -47,7 +47,7 @@ export const commands = [
   },
   {
     id: "vize-tsgo",
-    label: "Vize 0.742.0 Content Mapper + TypeScript 7.1 beta (tsc)",
+    label: "Vize 0.743.0 Content Mapper + TypeScript 7.1 beta (tsc)",
     executable: `node_modules/.bin/tsc${binSuffix}`,
     args: [
       "--runExternalCode",
@@ -60,7 +60,7 @@ export const commands = [
   },
   {
     id: "vize-tsrs",
-    label: "Vize 0.742.0 Content Mapper + tsrs 0.24.0",
+    label: "Vize 0.743.0 Content Mapper + tsrs 0.24.0",
     executable: `node_modules/.bin/tsrs${binSuffix}`,
     args: [
       "--runExternalCode",
@@ -87,7 +87,7 @@ export const commands = [
   },
   {
     id: "vize-tsrs-fast",
-    label: "Vize 0.742.0 Content Mapper + tsrs 0.24.0 --fast",
+    label: "Vize 0.743.0 Content Mapper + tsrs 0.24.0 --fast",
     executable: `node_modules/.bin/tsrs${binSuffix}`,
     args: [
       "--fast",
