@@ -1,0 +1,86 @@
+{
+  "environment": {
+    "timestamp": "2026-11-11T12:32:28.143Z",
+    "hostname": "workstation",
+    "platform": "darwin 25.4.0",
+    "cpu": "Apple M5 Pro",
+    "logicalCpus": 15,
+    "totalMemoryBytes": 51539607552,
+    "freeMemoryBytesAtReport": 5190778880,
+    "node": "v26.13.0",
+    "componentCount": 2500,
+    "intentionalErrorSites": 12,
+    "vizeServers": 1,
+    "checkerCounts": [
+      1,
+      2,
+      4,
+      8
+    ],
+    "cachePolicy": "fresh process and fresh HOME per run; no compiler, mapper, task, persisted Vize project, or tsbuildinfo cache; OS page cache not flushed",
+    "warmups": 0,
+    "iterations": 5
+  },
+  "results": [
+    {
+      "checkers": 1,
+      "samplesMs": [
+        4273.894167,
+        3854.353583,
+        3681.651042,
+        3649.260833,
+        3678.938125
+      ],
+      "meanMs": 3827.6195500000003,
+      "medianMs": 3681.651042,
+      "minMs": 3649.260833,
+      "maxMs": 4273.894167,
+      "standardDeviationMs": 234.5636569021744
+    },
+    {
+      "checkers": 2,
+      "samplesMs": [
+        2394.00375,
+        2447.830458,
+        2335.720208,
+        2337.036292,
+        2403.366667
+      ],
+      "meanMs": 2383.591475,
+      "medianMs": 2394.00375,
+      "minMs": 2335.720208,
+      "maxMs": 2447.830458,
+      "standardDeviationMs": 42.62666746189652
+    },
+    {
+      "checkers": 4,
+      "samplesMs": [
+        1712.271583,
+        1675.273166,
+        1711.477916,
+        1703.380625,
+        1667.980792
+      ],
+      "meanMs": 1694.0768163999996,
+      "medianMs": 1703.380625,
+      "minMs": 1667.980792,
+      "maxMs": 1712.271583,
+      "standardDeviationMs": 18.734932138835436
+    },
+    {
+      "checkers": 8,
+      "samplesMs": [
+        1485.254959,
+        1368.47175,
+        1409.54425,
+        1478.388917,
+        1338.824709
+      ],
+      "meanMs": 1416.096917,
+      "medianMs": 1409.54425,
+      "minMs": 1338.824709,
+      "maxMs": 1485.254959,
+      "standardDeviationMs": 58.2154895935091
+    }
+  ]
+}
