@@ -74,31 +74,33 @@ not presented as interchangeable.
 
 ## Recorded result
 
-Apple M2 Max, 96 GiB RAM, Node.js 26.13.0, `vize@0.745.0`, `@vue/content-mapper@4.0.0-alpha.3`,
-`tsrs@0.24.0-ts7.1.0-beta`, `vue-tsc@3.3.14`; zero warmups and five fresh-process runs:
+Apple M5 Pro, 48 GiB RAM, Node.js 26.13.0, `vize@0.746.0`, `@vue/content-mapper@4.0.0-alpha.3`,
+`tsrs@0.25.0-ts7.1.0-beta`, `vue-tsc@3.3.14`; zero warmups and five fresh-process runs:
 
 | Checker                              |   Median |           Range | Speedup vs vue-tsc |
 | ------------------------------------ | -------: | --------------: | -----------------: |
-| Vize Content Mapper + tsrs           |  1.363 s |   1.263–1.500 s |             18.00x |
-| Vize Content Mapper + TypeScript 7.1 |  3.466 s |   3.069–3.642 s |              7.08x |
-| Vue Content Mapper + tsrs            |  5.993 s |   5.861–6.209 s |              4.09x |
-| Vue Content Mapper + TypeScript 7.1  |  7.008 s |   6.933–7.160 s |              3.50x |
-| vue-tsc + TypeScript 6               | 24.530 s | 24.450–27.278 s |              1.00x |
+| Vize Content Mapper + tsrs           |  1.143 s |   1.076–1.450 s |             20.88x |
+| Vize Content Mapper + TypeScript 7.1 |  3.384 s |   3.119–3.653 s |              7.05x |
+| Vue Content Mapper + tsrs            |  5.889 s |   5.422–6.132 s |              4.05x |
+| Vue Content Mapper + TypeScript 7.1  |  7.420 s |   6.551–7.993 s |              3.21x |
+| vue-tsc + TypeScript 6               | 23.852 s | 23.495–25.307 s |              1.00x |
 
 The same run measured both `tsrs` paths with `--fast`:
 
 | Checker                    | Default | `--fast` | Speedup from `--fast` | Speedup vs vue-tsc |
 | -------------------------- | ------: | -------: | --------------------: | -----------------: |
-| Vize Content Mapper + tsrs | 1.363 s |  0.936 s |                 1.46x |             26.20x |
-| Vue Content Mapper + tsrs  | 5.993 s |  5.894 s |                 1.02x |              4.16x |
+| Vize Content Mapper + tsrs | 1.143 s |  0.861 s |                 1.33x |             27.69x |
+| Vue Content Mapper + tsrs  | 5.889 s |  5.791 s |                 1.02x |              4.12x |
 
-See the [Markdown report](./benchmark/results/2026-11-11T15-37-32Z.md) and
-[raw JSON](./benchmark/results/2026-11-11T15-37-32Z.json). Every measured invocation passed the
+See the [Markdown report](./benchmark/results/2026-11-12T04-05-05Z.md) and
+[raw JSON](./benchmark/results/2026-11-12T04-05-05Z.json). Every measured invocation passed the
 exact 12-diagnostic parity gate, including both `--fast` paths.
 
-The machine had background load during this run, including one visible outlier in each `--fast`
-lane. The report therefore keeps every sample and uses the median; compare the ranges and raw JSON
-rather than the fastest sample alone. The Vize `--fast` median remained below one second.
+The run started after the machine went quiet (load average below 4), and other processes used 0.78
+CPU cores on average. The report keeps every sample and uses the median; compare the ranges and raw
+JSON rather than the fastest sample alone. The Vize `--fast` median remained below one second, and
+its range (0.552–0.955 s) does not overlap the default range. The Vue `--fast` and default ranges
+overlap.
 
 ### `vize check` checker-worker scaling
 
@@ -106,14 +108,14 @@ With the same machine and corpus, fixing `--servers 1` and changing only `--chec
 
 | Checker workers per Corsa process |  Median |         Range | Speedup vs 1 checker |
 | --------------------------------: | ------: | ------------: | -------------------: |
-|                                 1 | 4.264 s | 4.213–4.657 s |                1.00x |
-|                                 2 | 2.725 s | 2.643–2.777 s |                1.56x |
-|                                 4 | 1.940 s | 1.867–1.944 s |                2.20x |
-|                                 8 | 1.563 s | 1.520–1.673 s |                2.73x |
+|                                 1 | 3.552 s | 3.541–4.211 s |                1.00x |
+|                                 2 | 2.302 s | 2.263–2.373 s |                1.54x |
+|                                 4 | 1.671 s | 1.621–1.794 s |                2.13x |
+|                                 8 | 1.437 s | 1.299–1.726 s |                2.47x |
 
-On the cold path, eight workers are 2.73x faster than one. See the
-[checker-scaling report](./benchmark/results/vize-checkers-2026-11-11T15-41-31Z.md) and
-[raw JSON](./benchmark/results/vize-checkers-2026-11-11T15-41-31Z.json). Each of the 20 measured
+On the cold path, eight workers are 2.47x faster than one. Other processes used 0.44 CPU cores on
+average. See the [checker-scaling report](./benchmark/results/vize-checkers-2026-11-12T04-05-54Z.md)
+and [raw JSON](./benchmark/results/vize-checkers-2026-11-12T04-05-54Z.json). Each of the 20 measured
 invocations independently passed the exact 12-diagnostic parity gate.
 
 ### Peak memory
@@ -123,17 +125,18 @@ tree (median of three runs):
 
 | Checker                              | Peak tree RSS | Largest process | Processes | vs vue-tsc |
 | ------------------------------------ | ------------: | --------------: | --------: | ---------: |
-| Vize Content Mapper + tsrs `--fast`  |      1.14 GiB |        1.07 GiB |         2 |      0.31x |
-| Vize Content Mapper + tsrs           |      1.36 GiB |        1.29 GiB |         2 |      0.37x |
-| Vue Content Mapper + tsrs `--fast`   |      1.51 GiB |        0.96 GiB |         3 |      0.41x |
-| Vue Content Mapper + tsrs            |      1.77 GiB |        0.98 GiB |         3 |      0.48x |
-| Vue Content Mapper + TypeScript 7.1  |      2.65 GiB |        1.65 GiB |         3 |      0.72x |
-| Vize Content Mapper + TypeScript 7.1 |      2.93 GiB |        2.89 GiB |         2 |      0.79x |
-| vue-tsc + TypeScript 6               |      3.69 GiB |        3.69 GiB |         1 |      1.00x |
+| Vize Content Mapper + tsrs `--fast`  |      1.19 GiB |        1.18 GiB |         2 |      0.32x |
+| Vize Content Mapper + tsrs           |      1.43 GiB |        1.36 GiB |         2 |      0.38x |
+| Vue Content Mapper + tsrs `--fast`   |      1.62 GiB |        0.98 GiB |         3 |      0.43x |
+| Vue Content Mapper + tsrs            |      1.77 GiB |        0.99 GiB |         3 |      0.47x |
+| Vue Content Mapper + TypeScript 7.1  |      2.64 GiB |        1.66 GiB |         3 |      0.71x |
+| Vize Content Mapper + TypeScript 7.1 |      2.75 GiB |        2.67 GiB |         2 |      0.73x |
+| vue-tsc + TypeScript 6               |      3.74 GiB |        3.74 GiB |         1 |      1.00x |
 
-Vize + tsrs `--fast` used 1.14 GiB, 69% less than vue-tsc and 24% less than Vue Content Mapper +
-tsrs `--fast`. See the [memory report](./benchmark/results/memory-2026-11-11T15-40-15Z.md) and
-[raw JSON](./benchmark/results/memory-2026-11-11T15-40-15Z.json).
+Vize + tsrs `--fast` used 1.19 GiB, 68% less than vue-tsc and 27% less than Vue Content Mapper +
+tsrs `--fast`. Other processes used 0.53 CPU cores on average. See the
+[memory report](./benchmark/results/memory-2026-11-12T04-08-50Z.md) and
+[raw JSON](./benchmark/results/memory-2026-11-12T04-08-50Z.json).
 
 ## Performance target
 
@@ -164,10 +167,10 @@ COMPONENT_COUNT=3000 vp run generate
 - [`tsconfig.vue-content-mapper.json`](./tsconfig.vue-content-mapper.json) selects
   `@vue/content-mapper@4.0.0-alpha.3`.
 - [`tsconfig.vize-content-mapper.json`](./tsconfig.vize-content-mapper.json) selects
-  `vize@0.745.0`.
+  `vize@0.746.0`.
 
 Both Content Mapper configurations run unchanged on `typescript@7.1.0-beta` and
-`tsrs@0.24.0-ts7.1.0-beta`; only the executable changes. The `--fast` rows add only that flag.
+`tsrs@0.25.0-ts7.1.0-beta`; only the executable changes. The `--fast` rows add only that flag.
 
 Content Mappers execute external programs, so the TypeScript and tsrs commands explicitly pass
 `--runExternalCode`.

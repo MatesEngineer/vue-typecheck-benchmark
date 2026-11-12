@@ -1,21 +1,22 @@
 packages:
   - tools/*
 minimumReleaseAgeExclude:
-  - '@tsrs/darwin-arm64@0.24.0-ts7.1.0-beta'
-  - '@tsrs/darwin-x64@0.24.0-ts7.1.0-beta'
-  - '@tsrs/linux-arm64-gnu@0.24.0-ts7.1.0-beta'
-  - '@tsrs/linux-arm64-musl@0.24.0-ts7.1.0-beta'
-  - '@tsrs/linux-x64-gnu@0.24.0-ts7.1.0-beta'
-  - '@tsrs/linux-x64-musl@0.24.0-ts7.1.0-beta'
-  - '@tsrs/win32-x64@0.24.0-ts7.1.0-beta'
-  - '@vizejs/native-darwin-arm64@0.745.0'
-  - '@vizejs/native-darwin-x64@0.745.0'
-  - '@vizejs/native-linux-arm64-gnu@0.745.0'
-  - '@vizejs/native-linux-arm64-musl@0.745.0'
-  - '@vizejs/native-linux-x64-gnu@0.745.0'
-  - '@vizejs/native-linux-x64-musl@0.745.0'
-  - '@vizejs/native-win32-arm64-msvc@0.745.0'
-  - '@vizejs/native-win32-x64-msvc@0.745.0'
-  - '@vizejs/native@0.745.0'
-  - vize@0.745.0
-  - tsrs@0.24.0-ts7.1.0-beta
+  - '@tsrs/darwin-arm64@0.25.0-ts7.1.0-beta'
+  - '@tsrs/darwin-x64@0.25.0-ts7.1.0-beta'
+  - '@tsrs/linux-arm64-gnu@0.25.0-ts7.1.0-beta'
+  - '@tsrs/linux-arm64-musl@0.25.0-ts7.1.0-beta'
+  - '@tsrs/linux-x64-gnu@0.25.0-ts7.1.0-beta'
+  - '@tsrs/linux-x64-musl@0.25.0-ts7.1.0-beta'
+  - '@tsrs/win32-arm64@0.25.0-ts7.1.0-beta'
+  - '@tsrs/win32-x64@0.25.0-ts7.1.0-beta'
+  - '@vizejs/native-darwin-arm64@0.746.0'
+  - '@vizejs/native-darwin-x64@0.746.0'
+  - '@vizejs/native-linux-arm64-gnu@0.746.0'
+  - '@vizejs/native-linux-arm64-musl@0.746.0'
+  - '@vizejs/native-linux-x64-gnu@0.746.0'
+  - '@vizejs/native-linux-x64-musl@0.746.0'
+  - '@vizejs/native-win32-arm64-msvc@0.746.0'
+  - '@vizejs/native-win32-x64-msvc@0.746.0'
+  - '@vizejs/native@0.746.0'
+  - vize@0.746.0
+  - tsrs@0.25.0-ts7.1.0-beta
